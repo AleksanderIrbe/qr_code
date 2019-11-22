@@ -1,0 +1,35 @@
+{% extends 'qr_list/base.html' %}
+
+{% block title %}QR create{% endblock %}
+
+{% block content %}
+{% if new_list %}
+	<h2>Your list has been added.</h2>
+{% else %}
+	<h2>Add a new list</h2>
+	<form action="{% url 'qr_create_url' %}" method="post">
+		{% csrf_token %}
+{% for field in form %}
+	
+	{% if field.errors %}
+		{{ field.errors }}
+	{% endif %}
+
+{{ field }}  {{ field.label }} <br>
+{% endfor %}
+<!-- 	{{ form.qr_name }}
+	{{ form.qr_city }}
+	{{ form.qr_campaign }}
+	{{ form.qr_source }}
+	{{ form.qr_product }}
+	{{ form.slug }} -->
+
+
+		
+		<button type="submit" class="btn btn-primary">Create Tag</button>
+	</form>
+{% endif %}
+
+
+
+{% endblock %}
