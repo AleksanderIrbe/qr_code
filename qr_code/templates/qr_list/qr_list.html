@@ -11,7 +11,7 @@
 <table>
 <tr>
 <th>Название QR кода</th>
-<!-- <th>дата создания</th> -->
+<th>дата создания</th>
 <th>City</th>
 <th>Campaign</th>
 <th>Source</th>
@@ -22,7 +22,7 @@
 	{% for a  in latest_list %}
 	<tr>
 		<td><a href="{{a.get_absolute_url}}">{{a.qr_name}}</a></td>
-		<!-- <td><a>{{a.qr_date}}</a></td> -->
+		<td><a>{{a.qr_date}}</a></td>
 		<td><a>{{a.qr_city}}</a></td>
 		<td><a>{{a.qr_campaign}}</a></td>
 		<td><a>{{a.qr_source}}</a></td>

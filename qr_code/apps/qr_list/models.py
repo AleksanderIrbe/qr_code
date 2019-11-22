@@ -2,7 +2,7 @@ from django.db import models
 from django.shortcuts import reverse
 
 class List(models.Model):
-	#qr_date = models.DateTimeField('дата создания', auto_now_add=True, db_index=True)
+	qr_date = models.DateTimeField('дата создания', auto_now_add=True, db_index=True)
 	qr_name = models.CharField('Название QR кода', max_length=100, null=False, blank=True, db_index=True)
 	qr_city = models.CharField('City', max_length=100, null=False, blank=True, )
 	qr_campaign = models.CharField('Campaign', max_length=100, null=False, blank=True, )
