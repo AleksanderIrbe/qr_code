@@ -8,7 +8,7 @@ class List(models.Model):
 	qr_campaign = models.CharField('Campaign', max_length=100, null=False, blank=True, )
 	qr_source = models.CharField('Source', max_length=100, null=False, blank=True, )
 	qr_product = models.CharField('Product', max_length=100, null=False, blank=True, )
-	#qr_quantity = models.IntegerField('счетчик', default=0, null=False, blank=True)
+	qr_quantity = models.IntegerField('счетчик', default=0, null=False, blank=True)
 	slug = models.SlugField('слаг', max_length=600)
 
 	# class Meta:

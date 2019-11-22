@@ -6,7 +6,7 @@ from django.utils import timezone
 class ListForm(forms.Form):
 	#qr_date = forms.DateTimeField(auto_now_add=True)
 	#qr_date = forms.DateTimeField()
-	#qr_quantity = forms.IntegerField()
+	qr_quantity = forms.IntegerField()
 
 	qr_name = forms.CharField(max_length=100)
 	qr_city = forms.CharField(max_length=100)
@@ -16,7 +16,8 @@ class ListForm(forms.Form):
 	slug = forms.SlugField(max_length=600)
 
 	#qr_date.widget.attrs.update({'class':'form-control', 'value':timezone.now()})
-	#qr_quantity.widget.attrs.update({'class':'form-control', 'value':'0'})
+	qr_quantity.widget.attrs.update({'class':'form-control', 'value':0})
+	#qr_quantity.widget.attrs.update({'class':'form-control'})
 	qr_name.widget.attrs.update({'class':'form-control'})
 	qr_city.widget.attrs.update({'class':'form-control'})
 	qr_campaign.widget.attrs.update({'class':'form-control'})
@@ -41,7 +42,7 @@ class ListForm(forms.Form):
 										qr_product = self.cleaned_data['qr_product'],
 										slug = self.cleaned_data['slug'],
 										#qr_date = self.cleaned_data['qr_date'],
-										#qr_quantity = self.cleaned_data['0'],
+										qr_quantity = self.cleaned_data['qr_quantity'],
 										)
 		return new_list
 		
