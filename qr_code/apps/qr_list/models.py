@@ -8,19 +8,18 @@ def latinizator(letter, dic):
 		for i, j in dic.items():
 			letter = letter.replace(i, j)
 		return letter
-		#return latinizator(new_slug, legend) + '-' + str(int(time()))
-
+		
 
 
 
 def gen_slug(s):
 	rus_slug = slugify(s, allow_unicode=True)
 	#транслитерация
-	
 	legend = {'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'yo','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'y','ы':'y','ь':"'",'э':'e','ю':'yu','я':'ya',}
+	
 	new_slug = latinizator(rus_slug, legend)
 	return new_slug + '-' + str(int(time()))
-	#return new_slug
+	
 
 class List(models.Model):
 	qr_date = models.DateTimeField('дата создания', auto_now_add=True, db_index=True)

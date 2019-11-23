@@ -6,8 +6,6 @@ from . models import List
 @admin.register(List)
 class ListAdmin(admin.ModelAdmin):
 	# порядок отображения полей
-	#list_display = ('qr_name', 'qr_date',  'qr_city', 'qr_campaign', 'qr_source', 'qr_product', 'qr_quantity', 'qr_create')
-	#prepopulated_fields = {'slug':('qr_name', 'qr_city' )}
 	list_display = ('qr_name', 'qr_city', 'qr_campaign', 'qr_source', 'qr_product', 'slug')
     
 	# поля, которые можно сразу редактировать

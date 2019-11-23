@@ -11,11 +11,10 @@ def base_page(request):
 	latest_list = List.objects.all()
 	admin_url = '../admin/qr_list/list/'
 	return render(request, 'qr_list/qr_list.html', {'latest_list':latest_list, 'admin_url':admin_url,})
-	#return render(request, 'qr_list/qr_list.html', {'admin_url':admin_url,})
+	
 
 class ListDetail(View):
 	def get(self, request, slug):
-		#detail = List.objects.get(slug__iexact=slug)
 		detail = get_object_or_404(List, slug__iexact=slug)
 		return render(request, 'qr_list/qr_detail.html', {'detail':detail})
 
@@ -32,12 +31,3 @@ class ListCreate(View):
 		return render(request, 'qr_list/qr_create.html', {'form':bound_form})
 
 		
-# def list_detail(request, slug):
-# 	detail = List.objects.get(slug__iexact=slug)
-# 	return render(request, 'qr_list/qr_detail.html', {'detail':detail})
-	
-
-# def qr_lists(request):
-# 	qr_lists=List.objects.all()
-# 	return render(request, 'blog/index.html', context={'qr_lists':qr_lists})
-	

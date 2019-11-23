@@ -5,7 +5,15 @@
 	<title>{% block title %}QRcode{% endblock %}  </title>
 </head>
 <body>
-		{% block content %}QRcode body{% endblock %}
+
+{% block header %}
+<a href="/qr/">Список QR кодов </a> &nbsp   <a href="/qr/create">Создание QR кода </a><br>
+<hr>
+
+{% endblock %}
+
+	{% block content %}QRcode body{% endblock %}
+	
 
 		
 </body>
