@@ -2,7 +2,7 @@ from django import forms
 from . models import List
 from django.core.exceptions import ValidationError
 from django.utils import timezone
-from django.utils.text import slugify
+
 
 class ListForm(forms.ModelForm):
 	class Meta:
@@ -11,8 +11,7 @@ class ListForm(forms.ModelForm):
 		fields = ['qr_quantity','qr_name', 'qr_city', 'qr_campaign', 'qr_source', 'qr_product',]
 		#widgets = {'qr_quantity':forms.TextInput(attrs={'value':0})}
 			
-	# def create_slug(qr_name):
-	# 	new_slug = slugify(qr_name, allow_unicode=True)
+
 		
 
 	def clean_slug(self):
