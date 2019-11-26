@@ -28,7 +28,7 @@
 		<td><a>{{a.qr_source}}</a></td>
 		<td><a>{{a.qr_product}}</a></td>
 		<td><a>{{a.qr_quantity}}</a></td>
-		<td><button><a href="{{admin_url}}{{a.id}}/change/">редактирование</a></button></td>
+		<td><button><a href="{{a.get_update_url}}">редактирование</a></button></td>
 		<td><button><a href="{{admin_url}}{{a.id}}/delete/">удаление</a></button></td>
 		<td><button><a href="#">получение QR кода</a></button></td>
 
