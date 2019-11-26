@@ -4,6 +4,7 @@ from . forms import ListForm
 from . models import List
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.generic import View
+from django.urls import reverse
 
 # Create your views here.
 # на главной странице для отображения таблицы
@@ -44,4 +45,13 @@ class ListUpdate(View):
 			new_qr = bound_form.save()
 			return redirect(new_qr)
 		return render(request, 'qr_list/qr_update.html', context={'form':bound_form, 'detail':detail})
+
+class ListDelete(View):
+	def get(self, request, slug):
+		detail = List.objects.get(slug__iexact=slug)
+		return render(request, 'qr_list/qr_delete.html', context={'detail':detail})		
 		
+	def post(self, request, slug):
+		detail = List.objects.get(slug__iexact=slug)
+		detail.delete()
+		return redirect(reverse('base_page'))
