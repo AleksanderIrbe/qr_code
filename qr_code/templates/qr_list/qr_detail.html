@@ -29,8 +29,8 @@
 <td>{{ detail.qr_quantity }}</td> 
 </tr>
 </table>
-
-<form action="{{ detail.get_update_url }}"><button type="submit" >Edit QR code</button></form>
+<hr>
+<button  type="submit" ><a href="{{ detail.get_update_url }}">Edit QR code</a></button> <button backgroundcolor="red" type="submit"><a href="{{ detail.get_delete_url }}">Delete QR code</a></button>
 
 
 {% endblock %}

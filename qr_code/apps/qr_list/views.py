@@ -28,7 +28,7 @@ class ListCreate(View):
 		bound_form=ListForm(request.POST)
 		if bound_form.is_valid():
 			new_qr=bound_form.save()
-			return redirect(new_qr)
+			return redirect(reverse('base_page'))
 		return render(request, 'qr_list/qr_create.html', {'form':bound_form})
 
 		

@@ -37,6 +37,9 @@ class List(models.Model):
 	def get_update_url(self):
 		return reverse('qr_update_url', kwargs={'slug':self.slug})
 
+	def get_delete_url(self):
+		return reverse('qr_delete_url', kwargs={'slug':self.slug})
+
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.slug = gen_slug(self.qr_name)
