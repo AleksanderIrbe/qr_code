@@ -5,6 +5,10 @@ from . models import List
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.generic import View
 from django.urls import reverse
+# импортируется модуль сосздания QR кода
+import qrcode
+# из модуля обработки изображений импортируется конвертер форматов
+from PIL import Image
 
 # Create your views here.
 # на главной странице для отображения таблицы
@@ -55,3 +59,24 @@ class ListDelete(View):
 		detail = List.objects.get(slug__iexact=slug)
 		detail.delete()
 		return redirect(reverse('base_page'))
+
+
+class ListCode(View):
+	def qr_code_generator(self, request, slug):
+		qr_link = 'photo.irbe.pro'
+		data = (qr_link + self.slug)
+		# переменная присваивается функции QR кода
+		qr.add_data(data)
+		qr.make(fit=True)
+		# задается цвет QR кода и фона
+		img = qr.make_image(fill_color="black", back_color="white")
+		# QR код сохраняется в формате png
+		img_name = self.slug + '.png'
+		img.save(img_name)
+		return img.png
+
+
+	def get(self, request, slug):
+		detail = List.objects.get(slug__iexact=slug)
+		bound_form = ListForm(instance=detail)
+		return render(request, 'qr_list/qr_code.html', context={'form':bound_form, 'detail':detail})
