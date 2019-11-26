@@ -1,0 +1,24 @@
+{% extends 'qr_list/base.html' %}
+
+{% block title %}Edit QR code "{{ detail.title|title }}" {% endblock %}
+
+{% block content %}
+	<h2>Edit QR code</h2>
+	<form action="{{ detail.get_update_url }}" method="post">
+		{% csrf_token %}
+{% for field in form %}
+	
+	{% if field.errors %}
+		{{ field.errors }}
+	{% endif %}
+
+{{ field }}  {{ field.label }} <br>
+{% endfor %}
+		
+		<button type="submit" class="btn btn-primary">Update QR code</button>
+	</form>
+
+
+
+
+{% endblock %}

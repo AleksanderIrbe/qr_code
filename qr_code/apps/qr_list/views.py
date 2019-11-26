@@ -26,8 +26,22 @@ class ListCreate(View):
 	def post(self, request):
 		bound_form=ListForm(request.POST)
 		if bound_form.is_valid():
-			new_tag=bound_form.save()
-			return redirect(new_tag)
+			new_qr=bound_form.save()
+			return redirect(new_qr)
 		return render(request, 'qr_list/qr_create.html', {'form':bound_form})
 
+		
+class ListUpdate(View):
+	def get(self, request, slug):
+		detail = List.objects.get(slug__iexact=slug)
+		bound_form = ListForm(instance=detail)
+		return render(request, 'qr_list/qr_update.html', context={'form':bound_form, 'detail':detail})
+
+	def post(self, request, slug):
+		detail = List.objects.get(slug__iexact=slug)
+		bound_form = ListForm(request.POST, instance=detail)
+		if bound_form.is_valid():
+			new_qr = bound_form.save()
+			return redirect(new_qr)
+		return render(request, 'qr_list/qr_update.html', context={'form':bound_form, 'detail':detail})
 		

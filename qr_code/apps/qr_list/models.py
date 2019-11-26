@@ -8,9 +8,6 @@ def latinizator(letter, dic):
 		for i, j in dic.items():
 			letter = letter.replace(i, j)
 		return letter
-		
-
-
 
 def gen_slug(s):
 	rus_slug = slugify(s, allow_unicode=True)
@@ -36,6 +33,9 @@ class List(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('qr_detail_url', kwargs={'slug':self.slug})
+
+	def get_update_url(self):
+		return reverse('qr_update_url', kwargs={'slug':self.slug})
 
 	def save(self, *args, **kwargs):
 		if not self.id:
