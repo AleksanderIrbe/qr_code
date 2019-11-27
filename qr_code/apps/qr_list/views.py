@@ -21,7 +21,36 @@ def base_page(request):
 class ListDetail(View):
 	def get(self, request, slug):
 		detail = get_object_or_404(List, slug__iexact=slug)
-		return render(request, 'qr_list/qr_detail.html', {'detail':detail})
+				# задаются параметры внешнего вида
+		qr = qrcode.QRCode(
+		    version=1, # размер от 1 до 40
+		    error_correction=qrcode.constants.ERROR_CORRECT_L, # Степень корректировки ошибок L,M,Q,H
+		    box_size=10, # количество пикселов в клеточке
+		    border=4, # толщина рамки
+		)
+
+		# набор полей таблицы. В работающем варианте должны вводиться из базы данных
+		qr_slug = self.slug__iexact=slug
+		# поля передаются в переменную data
+		data = (qr_slug)
+		# переменная присваивается функции QR кода
+		qr.add_data(data)
+		qr.make(fit=True)
+		# задается цвет QR кода и фона
+		img = qr.make_image(fill_color="black", back_color="white")
+		#задается имя и тип 
+		name = self.slug__iexact=slug + '.png'
+		# QR код сохраняется в формате png
+		img.save(name)
+		# файл в формате png передается в конвертер
+		# j_file = Image.open(img)
+
+		# # сохраняется в нужных форматах
+		# j_file.save('3.jpg')
+		# j_file.save('3.pdf')
+
+
+		return render(request, 'qr_list/qr_detail.html', {'detail':detail, 'img':img})
 
 class ListCreate(View):
 	def get(self, request):
