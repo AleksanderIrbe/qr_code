@@ -46,8 +46,8 @@ class ListDetail(View):
 		filename = self.slug__iexact=slug + '.png'
 
 		# QR код сохраняется в формате png
-		img.save(os.path.join(img_path, filename))
-		
+		img.save(os.path.join(img_path, 'qr.png'))
+		#img.save(os.path.join(img_path, filename))
 		# файл в формате png передается в конвертер
 		# j_file = Image.open(img)
 
