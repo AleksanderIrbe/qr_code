@@ -3,6 +3,8 @@ from django.urls import path
 from qr_list import views
 #from .views import *
 
+
+
 #app_name = 'qr_list'
 
 urlpatterns = [
@@ -11,5 +13,5 @@ urlpatterns = [
     path('<str:slug>/', views.ListDetail.as_view(), name='qr_detail_url'),
     path('<str:slug>/update/', views.ListUpdate.as_view(), name='qr_update_url'),
     path('<str:slug>/delete/', views.ListDelete.as_view(), name='qr_delete_url'),
-    path('<str:slug>/code/', views.ListCode.as_view(), name='qr_code_url'),
-]
+    ]
+

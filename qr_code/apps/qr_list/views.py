@@ -6,9 +6,11 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.generic import View
 from django.urls import reverse
 # импортируется модуль сосздания QR кода
-import qrcode
+import qrcode, os
 # из модуля обработки изображений импортируется конвертер форматов
 from PIL import Image
+
+
 
 # Create your views here.
 # на главной странице для отображения таблицы
@@ -28,7 +30,9 @@ class ListDetail(View):
 		    box_size=10, # количество пикселов в клеточке
 		    border=4, # толщина рамки
 		)
-
+		# задается путь к папке, в которой хранится файл
+		img_path = os.path.abspath('./qr_code/static/qr_list/')
+		
 		# набор полей таблицы. В работающем варианте должны вводиться из базы данных
 		qr_slug = self.slug__iexact=slug
 		# поля передаются в переменную data
@@ -39,9 +43,11 @@ class ListDetail(View):
 		# задается цвет QR кода и фона
 		img = qr.make_image(fill_color="black", back_color="white")
 		#задается имя и тип 
-		name = self.slug__iexact=slug + '.png'
+		filename = self.slug__iexact=slug + '.png'
+
 		# QR код сохраняется в формате png
-		img.save(name)
+		img.save(os.path.join(img_path, filename))
+		
 		# файл в формате png передается в конвертер
 		# j_file = Image.open(img)
 
@@ -50,7 +56,7 @@ class ListDetail(View):
 		# j_file.save('3.pdf')
 
 
-		return render(request, 'qr_list/qr_detail.html', {'detail':detail, 'img':img})
+		return render(request, 'qr_list/qr_detail.html', {'detail':detail, 'filename':filename, 'img_path':img_path})
 
 class ListCreate(View):
 	def get(self, request):
@@ -90,22 +96,4 @@ class ListDelete(View):
 		return redirect(reverse('base_page'))
 
 
-class ListCode(View):
-	def qr_code_generator(self, request, slug):
-		qr_link = 'photo.irbe.pro'
-		data = (qr_link + self.slug)
-		# переменная присваивается функции QR кода
-		qr.add_data(data)
-		qr.make(fit=True)
-		# задается цвет QR кода и фона
-		img = qr.make_image(fill_color="black", back_color="white")
-		# QR код сохраняется в формате png
-		img_name = self.slug + '.png'
-		img.save(img_name)
-		return img.png
 
-
-	def get(self, request, slug):
-		detail = List.objects.get(slug__iexact=slug)
-		bound_form = ListForm(instance=detail)
-		return render(request, 'qr_list/qr_code.html', context={'form':bound_form, 'detail':detail})

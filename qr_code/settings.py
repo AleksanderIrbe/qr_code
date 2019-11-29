@@ -122,3 +122,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = '/home/aleksander/Документы/qr_code/qr_code/static/qr_list'
+# для файлов изображений
+
+
+
+
+STATICFILES_DIRS = [
+    os.path.join(PROJECT_ROOT, 'static'),
+]
+#"Поисковики" статитки. Первый ищет статику в STATICFILES_DIRS, второй в папках приложений
+# STATICFILES_FINDERS = (
+# 'django.contrib.staticfiles.finders.FileSystemFinder',
+# 'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+#     )
+

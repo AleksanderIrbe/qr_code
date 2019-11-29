@@ -1,5 +1,5 @@
 {% extends 'qr_list/base.html' %}
-
+{% load static %}
 {% block title %}{{ detail.qr_name }}{% endblock %}
 
 
@@ -32,7 +32,11 @@
 <hr >
 <button  type="submit" ><a href="{{ detail.get_update_url }}">Edit QR code</a></button> <button backgroundcolor="red" type="submit"><a href="{{ detail.get_delete_url }}">Delete QR code</a></button><br>
 
-<img src="{{ img }}"
+
+
+
+<img src="{% static 'qr_list/' %}{{filename}}"/>
+
 
 {% endblock %}
 
