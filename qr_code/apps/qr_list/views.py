@@ -43,24 +43,28 @@ class ListDetail(View):
 		# задается цвет QR кода и фона
 		img = qr.make_image(fill_color="black", back_color="white")
 		#задается имя и тип 
-		filename = self.slug__iexact=slug + '.png'
-
+		#filename = self.slug__iexact=slug + '.png'
+		filename = 'qr.png'
 		# QR код сохраняется в формате png
-		img.save(os.path.join(img_path, 'qr.png'))
-		#img.save(os.path.join(img_path, filename))
+		img.save(os.path.join(img_path, filename))
 		# файл в формате png передается в конвертер
-		# j_file = Image.open(img)
+		path_open = img_path +'/' + filename
+		j_file = Image.open(path_open)
+		# сохраняется в нужных форматах
+		j_file.save(os.path.join(img_path, 'qr.jpg'))
+		j_file.save(os.path.join(img_path, 'qr.pdf'))
+		#return render(request, 'qr_list/qr_detail.html', {'detail':detail, 'filename':filename, 'img_path':img_path})
+		return render(request, 'qr_list/qr_detail.html', {'detail':detail, 'img_path':img_path})
 
-		# # сохраняется в нужных форматах
-		# j_file.save('3.jpg')
-		# j_file.save('3.pdf')
 
 
-		return render(request, 'qr_list/qr_detail.html', {'detail':detail, 'filename':filename, 'img_path':img_path})
+
+
 
 class ListCreate(View):
 	def get(self, request):
 		form=ListForm()
+		#return render(request, 'qr_list/qr_create.html', {'form':form})
 		return render(request, 'qr_list/qr_create.html', {'form':form})
 
 	def post(self, request):

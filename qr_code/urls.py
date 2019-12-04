@@ -23,5 +23,5 @@ from .views import hello
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-	path('qr/', include('qr_list.urls'))
-]
+	path('qr/', include('qr_list.urls')),
+	]
