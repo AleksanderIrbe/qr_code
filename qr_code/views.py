@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.shortcuts import redirect
 
-def hello(request):
-	return HttpResponse('hello')
+# def redirect_gate(request):
+# 	return redirect('', permanent=True)
+
