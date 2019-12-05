@@ -99,6 +99,6 @@ class ListDelete(View):
 		detail.delete()
 		return redirect(reverse('base_page'))
 
-def intermediate(request):
+def intermediate(request, slug):
 	return render(request, 'qr_list/qr_intermediate.html')
 
