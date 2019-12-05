@@ -101,7 +101,18 @@ class ListDelete(View):
 
 class IntermediateGate(View):
 	def get(self, request, slug):
-		return render(request, 'qr_list/qr_intermediate.html')
+		#здесь поставлено возвращение ошибки 404, которая возникнет, если вводится QR код записи, которую уже удалили.
+		# но можно добавить проверку и выдавать таким посетителям переход на какую-нибудь другую целевую страницу.
+		detail = get_object_or_404(List, slug__iexact=slug)
+		#detail = List.objects.get(slug__iexact=slug)
+		quantity = int(detail.qr_quantity) + 1
+		detail = List.objects.get(slug__iexact=slug)
+		detail.qr_quantity = quantity
+		detail.save()
+		return render(request, 'qr_list/qr_intermediate.html', context={'quantity':quantity})
 
-# def intermediate(request, slug):
-# 	return render(request, 'qr_list/qr_intermediate.html')
+	# def post(self, request, slug, quantity):
+	# 	detail = List.objects.get(slug__iexact=slug)
+	# 	detail.qr_quantity = quantity
+	# 	detail.save()
+	# 	return render(request, 'qr_list/qr_intermediate.html', context={'quantity':quantity})
