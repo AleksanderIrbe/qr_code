@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# подключаем приложение qr_list
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
+# тут надо бы поменять часовой пояс, но пока не знаем, где будет использоваться приложение, можно оставить, как было
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -122,12 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATIC_ROOT = '/home/aleksander/Документы/qr_code/qr_code/static/qr_list'
 # для файлов изображений
-
-
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, 'static'),
@@ -137,4 +133,3 @@ STATICFILES_DIRS = [
 # 'django.contrib.staticfiles.finders.FileSystemFinder',
 # 'django.contrib.staticfiles.finders.AppDirectoriesFinder'
 #     )
-

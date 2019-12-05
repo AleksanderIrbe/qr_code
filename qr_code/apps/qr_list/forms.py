@@ -8,7 +8,7 @@ class ListForm(forms.ModelForm):
 	class Meta:
 		model = List
 		fields = ['qr_quantity','qr_name', 'qr_city', 'qr_campaign', 'qr_source', 'qr_product',]
-		
+# проверка слага, перевод его в нижний регистр
 	def clean_slug(self):
 		new_slug = self.cleaned_data['slug'].lower()
 		return new_slug

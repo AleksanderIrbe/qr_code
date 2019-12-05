@@ -7,7 +7,6 @@
 	<form action="{{ detail.get_update_url }}" method="post">
 		{% csrf_token %}
 {% for field in form %}
-	
 	{% if field.errors %}
 		{{ field.errors }}
 	{% endif %}
@@ -19,7 +18,5 @@
 		<button type="submit"><a href={% url 'base_page' %} > Отмена</a></button>
 
 	</form>
-
-
 
 {% endblock %}
