@@ -6,12 +6,10 @@
 
 	<form action="{% url 'qr_delete_url' slug=detail.slug %}" method="post">
 		{% csrf_token %}
-<h3> Are you sure you want to delete QR code:<b>"{{detail.qr_name}}"? </b></h3>
-		<button type="submit"><a href="{% url 'base_page' %}">Cancel</a></button>
-		<button type="submit">Delete</button>
-
+<h3> Вы уверены, что хотите удалить QR код:<b>"{{detail.qr_name}}"? </b></h3>
+		<button type="submit"><a href="{% url 'base_page' %}">Отмена</a></button>
+		<button type="submit">Удаление</button>
 
 	</form>
-
 
 {% endblock %}

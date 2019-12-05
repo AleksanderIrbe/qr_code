@@ -3,7 +3,7 @@
 {% block title %}Edit QR code "{{ detail.title|title }}" {% endblock %}
 
 {% block content %}
-	<h2>Edit QR code</h2>
+	<h2>Редактирование QR кода</h2>
 	<form action="{{ detail.get_update_url }}" method="post">
 		{% csrf_token %}
 {% for field in form %}
@@ -14,7 +14,7 @@
 {{ field }}  {{ field.label }} <br>
 {% endfor %}
 		
-		<button type="submit" >Update QR code</button>
+		<button type="submit" >Сохранить QR код</button>
 		<button type="submit"><a href={% url 'base_page' %} > Отмена</a></button>
 
 	</form>

@@ -25,13 +25,13 @@
 </tr>
 </table>
 <hr>
-<button  type="submit" ><a href="{{ detail.get_update_url }}">Edit QR code</a></button>&nbsp
-<button  type="submit"><a href="{{ detail.get_delete_url }}">Delete QR code</a></button><br>
+<button  type="submit" ><a href="{{ detail.get_update_url }}">редактирование QR кода</a></button>&nbsp
+<button  type="submit"><a href="{{ detail.get_delete_url }}">удаление QR кода</a></button><br>
 
 <img src="{% static 'qr_list/qr.png' %}"/><br>
-<button  type="submit"><a href="{% static 'qr_list/qr.png' %}" download="qr_code.png">Download as PNG</a></button>&nbsp
-<button  type="submit"><a href="{% static 'qr_list/qr.jpg' %}" download="qr_code.jpg">Download as JPG</a></button>&nbsp
-<button  type="submit"><a href="{% static 'qr_list/qr.pdf' %}" download="qr_code.pdf">Download as PDF</a></button>
+<button  type="submit"><a href="{% static 'qr_list/qr.png' %}" download="qr_code.png">Сохранить в PNG</a></button>&nbsp
+<button  type="submit"><a href="{% static 'qr_list/qr.jpg' %}" download="qr_code.jpg">Сохранить в JPG</a></button>&nbsp
+<button  type="submit"><a href="{% static 'qr_list/qr.pdf' %}" download="qr_code.pdf">Сохранить в PDF</a></button>
 
 {% endblock %}
 

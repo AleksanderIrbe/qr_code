@@ -3,10 +3,8 @@
 {% block title %}QR create{% endblock %}
 
 {% block content %}
-{% if new_list %}
-	<h2>Your list has been added.</h2>
-{% else %}
-	<h2>Add a new list</h2>
+
+	<h2>Создать QR код</h2>
 	<form action="{% url 'qr_create_url' %}" method="post">
 		{% csrf_token %}
 {% for field in form %}
@@ -17,10 +15,10 @@
 
 {{ field }}  {{ field.label }} <br>
 {% endfor %}
-		
-		<button type="submit" class="btn btn-primary">Create QR code</button>
+	
+		<button type="submit" class="btn btn-primary">Сохранить QR код</button>
 		<button type="submit"><a href={% url 'base_page' %} > Отмена</a></button>
 
 	</form>
-{% endif %}
+
 {% endblock %}
