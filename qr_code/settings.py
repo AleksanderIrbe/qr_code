@@ -31,7 +31,10 @@ if socket.gethostbyname(socket.gethostname()) == '127.0.1.1':
     #здесь находятся настройки сервера разработки
     DEBUG = False
 
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    if DEBUG == False:
+        ALLOWED_HOSTS = ['127.0.0.1']
+    else:
+        ALLOWED_HOSTS = []
 else:
     #здесь находятся настройки production-сервера
     DEBUG = False
