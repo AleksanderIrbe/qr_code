@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import hello
 
+
 urlpatterns = [
 # стартовая страница
     path('', hello, name='qr_hello'),
@@ -25,3 +26,4 @@ urlpatterns = [
 # путь к приложению qr_list
     path('qr/', include('qr_list.urls')),
     ]
+

@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os, sys
-
+#для разделения настроек сервера разработки и production
+import socket
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,9 +26,17 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 SECRET_KEY = '-7(kc=#jme8hfkqoow0v!fer5&t*^9)uh5c6f%65h(wvffd=8$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#для разделения настроек сервера разработки и production
+if socket.gethostbyname(socket.gethostname()) == '127.0.1.1':
+    #здесь находятся настройки сервера разработки
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+else:
+    #здесь находятся настройки production-сервера
+    DEBUG = False
+
+    ALLOWED_HOSTS = []
 
 
 # Application definition
