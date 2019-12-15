@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import hello
-from django.conf.urls import handler404
+from django.conf.urls import handler403 ,handler404, handler500
 
+handler403 = 'qr_code.views.view403'
 handler404 = 'qr_code.views.view404'
+handler500 = 'qr_code.views.view500'
 
 urlpatterns = [
 # стартовая страница
