@@ -29,7 +29,7 @@ SECRET_KEY = '-7(kc=#jme8hfkqoow0v!fer5&t*^9)uh5c6f%65h(wvffd=8$'
 #для разделения настроек сервера разработки и production
 if socket.gethostbyname(socket.gethostname()) == '127.0.1.1':
     #здесь находятся настройки сервера разработки
-    DEBUG = False
+    DEBUG = TEMPLATE_DEBUG= False
 
     if DEBUG == False:
         ALLOWED_HOSTS = ['127.0.0.1']
