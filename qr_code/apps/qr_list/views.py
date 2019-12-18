@@ -9,7 +9,6 @@ from django.urls import reverse
 import qrcode, os
 # из модуля обработки изображений импортируется конвертер форматов
 from PIL import Image
-#from qr_code.settings import STATICFILES_DIRS
 from qr_code.settings import BASE_DIR
 # для отображения списка QR кодов. Тут может быть дополнительный функционал с пагинацией страниц и с 
 # возможностью вернуться на страницу, с которой происходило редактирование QR кода. Но в задании этого не было
@@ -29,22 +28,13 @@ class ListDetail(View):
 		    border=4, # толщина рамки
 		)
 		# задается путь к папке, в которой хранятся графические файлы 
-		
-		
-		#img_path = os.path.abspath('./qr_code/apps/qr_list/static/qr_list/')
-		#img_path = os.path.join( 'qr_code/static/qr_list/')
 		img_path = os.path.join(BASE_DIR, 'static/qr_list')
-		#img_path = STATICFILES_DIRS()
-		print()
-		print('путь к статике')
-		print(img_path)
-		print()
 	
 		# формируется содержимое QR кода. В нашем случае - адрес страницы 
 		# промежуточного шлюза со слагом идентичным слагу в базе
 		# можно записать туда и еще всякую информацию, но для простоты - только слаг
 		qr_slug = self.slug__iexact=slug
-		# поля передаются в переменную data
+		# поля передаются в переменную data. На сервере разработки используется локальный адрес. На хостинге его нужно заменить рабочим адресом.
 		data = ('http://127.0.0.1:8000/qr/code/' + qr_slug)
 		# переменная присваивается функции QR кода
 		qr.add_data(data)

@@ -3,3 +3,6 @@ geckodriver.log
 __pycache__
 *.pyc
 qr_code/static__pycache_
+static/qr_list/qr.jpg
+static/qr_list/qr.pdf
+static/qr_list/qr.png

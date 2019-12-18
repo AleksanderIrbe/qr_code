@@ -18,10 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # подключаем папку apps
 PROJECT_ROOT = os.path.dirname(__file__)
-print()
-print('проджект рут')
-print(PROJECT_ROOT)
-print()
 
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 # Quick-start development settings - unsuitable for production
@@ -34,7 +30,7 @@ SECRET_KEY = '-7(kc=#jme8hfkqoow0v!fer5&t*^9)uh5c6f%65h(wvffd=8$'
 #для разделения настроек сервера разработки и production
 if socket.gethostbyname(socket.gethostname()) == '127.0.1.1':
     #здесь находятся настройки сервера разработки
-    DEBUG = TEMPLATE_DEBUG= False
+    DEBUG = TEMPLATE_DEBUG = True
 
     if DEBUG == False:
         ALLOWED_HOSTS = ['127.0.0.1']
@@ -139,26 +135,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-print()
-print('статик урл')
-print(STATIC_URL)
-print()
+
 # для файлов изображений
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#На сервере разработки os.path.join(BASE_DIR, '/static/') На рабочем не получилось так запустить. Приходится прописывать полностью адрес.
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-print()
-print('статик рут')
-print(STATIC_ROOT)
-print()
 
 STATICFILES_DIRS = [
-    #os.path.join(PROJECT_ROOT, 'static'),
+    #На сервере разработки os.path.join(BASE_DIR, '/static/') На рабочем не получилось так запустить. Приходится прописывать полностью адрес.
     os.path.join(BASE_DIR, 'static/'),
 ]
-print()
-print('статикфайлз дирз')
-print(STATICFILES_DIRS)
-print()
+
 #"Поисковики" статитки. Первый ищет статику в STATICFILES_DIRS, второй в папках приложений
 # STATICFILES_FINDERS = (
 # 'django.contrib.staticfiles.finders.FileSystemFinder',
